@@ -1,0 +1,29 @@
+{
+  "name": "koa-router-resources",
+  "version": "1.0.0",
+  "description": "Koa router resources like rails.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sven199109/koa-router-resources.git"
+  },
+  "keywords": [
+    "koa",
+    "router",
+    "resources"
+  ],
+  "author": "sven",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sven199109/koa-router-resources/issues"
+  },
+  "homepage": "https://github.com/sven199109/koa-router-resources#readme",
+  "dependencies": {
+    "babel-register": "^6.16.3",
+    "inflected": "^1.1.7",
+    "koa-router": "^7.0.1"
+  }
+}
