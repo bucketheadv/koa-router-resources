@@ -106,4 +106,21 @@ describe('Resources', function() {
       });
     });
   });
+
+  describe("test#apiResources", function() {
+    beforeEach(function() {
+      this._router = new Router(clone(router));
+      let controllersPath = path.resolve(__dirname, 'controllers');
+      this._router.configControllersPath(controllersPath);
+    });
+    it('should only gen api routes', function() {
+      var self = this;
+      this._router.apiResources('users');
+      const routes = self._router._router.stack.map(x => x.path);
+      expect(routes).to.not.includes('/users/new');
+      expect(routes).to.not.includes('/users/:id/edit');
+      expect(routes).to.includes('/users');
+      expect(routes).to.includes('/users/:id');
+    });
+  });
 });
