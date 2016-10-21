@@ -4,7 +4,7 @@
   "description": "Koa router resources like rails.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/mocha/bin/mocha"
   },
   "repository": {
     "type": "git",
@@ -23,7 +23,13 @@
   "homepage": "https://github.com/sven199109/koa-router-resources#readme",
   "dependencies": {
     "babel-register": "^6.16.3",
+    "clone": "^2.0.0",
     "inflected": "^1.1.7",
     "koa-router": "^7.0.1"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "deepcopy": "^0.6.3",
+    "mocha": "^3.1.2"
   }
 }
