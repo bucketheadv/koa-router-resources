@@ -3,7 +3,7 @@
 # Install
 
 ```bash
-npm install sven199019/koa-router-resources
+npm install koa-router-resources
 ```
 
 # Usage
