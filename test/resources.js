@@ -44,6 +44,7 @@ describe('Resources', function() {
             const routes = self._router._router.stack.map(x => x.path);
             expect(routes).to.includes('/admin/users/:user_id/articles/:article_id/coms');
             expect(routes).to.not.includes('/admin/users/:user_id/articles/:article_id/coms/new');
+            expect(routes).to.includes('/admin/users/:user_id/articles/:article_id/coms/:id');
           });
         });
         const routes = self._router._router.stack.map(x => x.path);
@@ -94,13 +95,13 @@ describe('Resources', function() {
               { method: 'get', path: 'test2' }
             ]);
             const routes = self._router._router.stack.map(x => x.path);
-            expect(routes).to.includes('/users/:user_id/posts/:post_id/comments/:comment_id/test2');
+            expect(routes).to.includes('/users/:user_id/posts/:post_id/comments/:id/test2');
           });
           this.members([
             { method: 'get', path: 'test1'}
           ]);
           const routes = self._router._router.stack.map(x => x.path);
-          expect(routes).to.includes('/users/:user_id/posts/:post_id/test1');
+          expect(routes).to.includes('/users/:user_id/posts/:id/test1');
         });
       });
     });
