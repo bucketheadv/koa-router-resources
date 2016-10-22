@@ -123,4 +123,48 @@ describe('Resources', function() {
       expect(routes).to.includes('/users/:id');
     });
   });
+
+  describe("test#namespace", function() {
+    beforeEach(function() {
+      this._router = new Router(clone(router));
+      let controllersPath = path.resolve(__dirname, 'controllers');
+      this._router.configControllersPath(controllersPath);
+    });
+    it('should gen api routes with namespace', function() {
+      var self = this;
+      this._router.namespace('admin', function() {
+        this.resources('users');
+      });
+      const routes = self._router.routerStack().map(x => x.path);
+      expect(routes).to.includes('/admin/users/new');
+      expect(routes).to.includes('/admin/users/:id/edit');
+      expect(routes).to.includes('/admin/users/:id');
+    });
+
+    it('should gen api routes with multi namespaces', function() {
+      var self = this;
+      this._router.namespace('admin', function() {
+        this.namespace('roles', function() {
+          this.resources('users');
+        });
+      });
+      const routes = self._router.routerStack().map(x => x.path);
+      expect(routes).to.includes('/admin/roles/users/new');
+      expect(routes).to.includes('/admin/roles/users/:id/edit');
+      expect(routes).to.includes('/admin/roles/users/:id');
+    });
+
+    it('should gen api routes with multi namespaces and resources', function() {
+      var self = this;
+      this._router.resources('users', {}, function() {
+        this.namespace('roles', function() {
+          this.resources('posts');
+        });
+      });
+      const routes = self._router.routerStack().map(x => x.path);
+      expect(routes).to.includes('/users/:user_id/roles/posts/new');
+      expect(routes).to.includes('/users/:user_id/roles/posts/:id/edit');
+      expect(routes).to.includes('/users/:user_id/roles/posts/:id');
+    });
+  });
 });

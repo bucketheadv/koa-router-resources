@@ -1,6 +1,6 @@
 {
   "name": "koa-router-resources",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Koa router resources like rails.",
   "main": "index.js",
   "scripts": {
