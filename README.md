@@ -1,5 +1,7 @@
 # koa-router-resources
 
+`koa-router-resources` is a package to set your resources' routes in koa framework.
+
 # Install
 
 ```bash
@@ -29,6 +31,12 @@ router.resources('users', {}, function() {
 });
 
 router.apiResources('roles');
+
+// In the version v0.1.0, It supports the method named 'namespace'.
+
+router.namespace('admin', function() {
+  this.apiResources('users');
+});
 
 // if you want to get `koa-router`, try `router._router`
 router._router.get('/others', function(ctx) {
@@ -68,4 +76,13 @@ PUT  /roles/:id
 DEL  /roles/:id
 
 GET /others
+
+### With version v0.1.0, using namespace
+GET  /admin/users
+POST /admin/users
+GET  /admin/users/:id
+PUT  /admin/users/:id
+DEL  /admin/users/:id
 ```
+
+You can also visit the examples in `test/resources.js`.
